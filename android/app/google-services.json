@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "616308922167",
+    "project_id": "logger-cb850",
+    "storage_bucket": "logger-cb850.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616308922167:android:733c0d0ae8141d64e7ecb2",
+        "android_client_info": {
+          "package_name": "com.sokolglebapps.logger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616308922167-1f5ea1vjudq2cpn6jqpn45f44jgpitc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sokolglebapps.logger",
+            "certificate_hash": "2fe580922d026e58acb7d7ab3763e13fd0fa04d1"
+          }
+        },
+        {
+          "client_id": "616308922167-aranhr77d2pc7ofcio99ch1eqh286fn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sokolglebapps.logger",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "616308922167-jc1pmmp1l6r3k4f3if6ali628de8jlsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj9pHK93He0Ez9NaYqizKiAUiWMTFZxYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616308922167-jc1pmmp1l6r3k4f3if6ali628de8jlsr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "616308922167-bkpvrq2eotiii0lv2s0tc0o5o249tb63.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sokolglebapps.logger"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
