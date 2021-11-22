@@ -297,7 +297,6 @@ class _MainWidgetState extends State<MainWidget> {
                                             }
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
-                                              shrinkWrap: true,
                                               scrollDirection: Axis.vertical,
                                               itemCount:
                                                   listViewMeasurementsRecordList

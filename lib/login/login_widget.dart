@@ -224,115 +224,219 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ],
                       ),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                                child: Container(
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.bGColor1,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme
+                                                .transparentTertiary,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    7, 7, 7, 7),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'What are you waiting for?',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.bGColor1,
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme
-                                              .transparentTertiary,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  7, 7, 7, 7),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'What are you waiting for?',
-                                                style:
-                                                    FlutterFlowTheme.bodyText1,
-                                              )
-                                            ],
+                                      InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RestorePasswordWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color:
+                                                FlutterFlowTheme.trnsparentMain,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    7, 7, 7, 7),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  'Hmm... Looks like',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                ),
+                                                Text(
+                                                  'I forgot my password...',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       )
                                     ],
                                   ),
-                                ),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.bGColor1,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                RestorePasswordWidget(),
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color:
-                                              FlutterFlowTheme.trnsparentMain,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  7, 7, 7, 7),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                'Hmm... Looks like',
-                                                style:
-                                                    FlutterFlowTheme.bodyText1,
-                                              ),
-                                              Text(
-                                                'I forgot my password...',
-                                                style:
-                                                    FlutterFlowTheme.bodyText1,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                          child: Column(
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.bGColor1,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme
+                                                .transparentTertiary,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    7, 7, 7, 7),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'And it still doesn\'t work?',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.bGColor1,
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegisterWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color:
+                                                FlutterFlowTheme.trnsparentMain,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    7, 7, 7, 7),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  'Nooo! I remembered!',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                ),
+                                                Text(
+                                                  'I need to create account!',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
@@ -365,9 +469,105 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'And it still doesn\'t work?',
+                                                'Ps, maybe this?',
                                                 style:
                                                     FlutterFlowTheme.bodyText1,
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 5, 0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 15,
+                                                      buttonSize: 30,
+                                                      fillColor: FlutterFlowTheme
+                                                          .transparentTertiary,
+                                                      icon: FaIcon(
+                                                        FontAwesomeIcons.google,
+                                                        color: FlutterFlowTheme
+                                                            .primaryColor,
+                                                        size: 15,
+                                                      ),
+                                                      onPressed: () async {
+                                                        final user =
+                                                            await signInWithGoogle(
+                                                                context);
+                                                        if (user == null) {
+                                                          return;
+                                                        }
+                                                        await Navigator
+                                                            .pushAndRemoveUntil(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                NavBarPage(
+                                                                    initialPage:
+                                                                        'Main'),
+                                                          ),
+                                                          (r) => false,
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 5, 0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 15,
+                                                      buttonSize: 30,
+                                                      fillColor: FlutterFlowTheme
+                                                          .transparentTertiary,
+                                                      icon: FaIcon(
+                                                        FontAwesomeIcons
+                                                            .facebookF,
+                                                        color: FlutterFlowTheme
+                                                            .tertiaryColor,
+                                                        size: 15,
+                                                      ),
+                                                      onPressed: () {
+                                                        print(
+                                                            'IconButton pressed ...');
+                                                      },
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 5, 0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 15,
+                                                      buttonSize: 30,
+                                                      fillColor: FlutterFlowTheme
+                                                          .transparentTertiary,
+                                                      icon: FaIcon(
+                                                        FontAwesomeIcons.phone,
+                                                        color: FlutterFlowTheme
+                                                            .tertiaryColor,
+                                                        size: 15,
+                                                      ),
+                                                      onPressed: () {
+                                                        print(
+                                                            'IconButton pressed ...');
+                                                      },
+                                                    ),
+                                                  )
+                                                ],
                                               )
                                             ],
                                           ),
@@ -388,12 +588,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   children: [
                                     InkWell(
                                       onTap: () async {
-                                        await Navigator.push(
+                                        final user =
+                                            await signInAnonymously(context);
+                                        if (user == null) {
+                                          return;
+                                        }
+                                        await Navigator.pushAndRemoveUntil(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                RegisterWidget(),
+                                                NavBarPage(initialPage: 'Main'),
                                           ),
+                                          (r) => false,
                                         );
                                       },
                                       child: Container(
@@ -413,12 +619,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Text(
-                                                'Nooo! I remembered!',
+                                                'Thanks a lot! But I\'ll try as...',
                                                 style:
                                                     FlutterFlowTheme.bodyText1,
                                               ),
                                               Text(
-                                                'I need to create account!',
+                                                ' a ninja! Anonymous!',
                                                 style:
                                                     FlutterFlowTheme.bodyText1,
                                               )
@@ -431,193 +637,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               )
                             ],
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.bGColor1,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme
-                                            .transparentTertiary,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            7, 7, 7, 7),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Ps, maybe this?',
-                                              style: FlutterFlowTheme.bodyText1,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 5, 0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 15,
-                                                    buttonSize: 30,
-                                                    fillColor: FlutterFlowTheme
-                                                        .transparentTertiary,
-                                                    icon: FaIcon(
-                                                      FontAwesomeIcons.google,
-                                                      color: FlutterFlowTheme
-                                                          .primaryColor,
-                                                      size: 15,
-                                                    ),
-                                                    onPressed: () async {
-                                                      final user =
-                                                          await signInWithGoogle(
-                                                              context);
-                                                      if (user == null) {
-                                                        return;
-                                                      }
-                                                      await Navigator
-                                                          .pushAndRemoveUntil(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              NavBarPage(
-                                                                  initialPage:
-                                                                      'Main'),
-                                                        ),
-                                                        (r) => false,
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 5, 0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 15,
-                                                    buttonSize: 30,
-                                                    fillColor: FlutterFlowTheme
-                                                        .transparentTertiary,
-                                                    icon: FaIcon(
-                                                      FontAwesomeIcons
-                                                          .facebookF,
-                                                      color: FlutterFlowTheme
-                                                          .tertiaryColor,
-                                                      size: 15,
-                                                    ),
-                                                    onPressed: () {
-                                                      print(
-                                                          'IconButton pressed ...');
-                                                    },
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 5, 0),
-                                                  child: FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 15,
-                                                    buttonSize: 30,
-                                                    fillColor: FlutterFlowTheme
-                                                        .transparentTertiary,
-                                                    icon: FaIcon(
-                                                      FontAwesomeIcons.phone,
-                                                      color: FlutterFlowTheme
-                                                          .tertiaryColor,
-                                                      size: 15,
-                                                    ),
-                                                    onPressed: () {
-                                                      print(
-                                                          'IconButton pressed ...');
-                                                    },
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.bGColor1,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      final user =
-                                          await signInAnonymously(context);
-                                      if (user == null) {
-                                        return;
-                                      }
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              NavBarPage(initialPage: 'Main'),
-                                        ),
-                                        (r) => false,
-                                      );
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.trnsparentMain,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            7, 7, 7, 7),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              'Thanks a lot! But I\'ll try as...',
-                                              style: FlutterFlowTheme.bodyText1,
-                                            ),
-                                            Text(
-                                              ' a ninja! Anonymous!',
-                                              style: FlutterFlowTheme.bodyText1,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

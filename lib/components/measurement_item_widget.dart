@@ -46,125 +46,125 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
           children: [
             Visibility(
               visible: functions.isHasImage(widget.measurement.image) ?? true,
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Color(0x00EEEEEE),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        imageUrl: widget.measurement.image,
-                        width: 55,
-                        height: 55,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  ],
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Color(0x00EEEEEE),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: widget.measurement.image,
+                          width: 55,
+                          height: 55,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-                child: InkWell(
-                  onTap: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MeasurementWidget(
+              child: InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MeasurementWidget(
+                        returnTo: widget.returnTo,
+                        groupIndex: widget.groupIndex,
+                        currentMeasurementRef: widget.measurement.reference,
+                      ),
+                    ),
+                  );
+                },
+                onDoubleTap: () async {
+                  final measurementsUpdateData = createMeasurementsRecordData(
+                    isFavorite: !(widget.measurement.isFavorite),
+                  );
+                  await widget.measurement.reference
+                      .update(measurementsUpdateData);
+                },
+                onLongPress: () async {
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    barrierColor: Color(0x80000000),
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        child: MesurementActionsIconsWidget(
+                          measurement: widget.measurement,
                           returnTo: widget.returnTo,
                           groupIndex: widget.groupIndex,
-                          currentMeasurementRef: widget.measurement.reference,
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0x00EEEEEE),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        constraints: BoxConstraints(
+                          maxHeight: 40,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0x00EEEEEE),
+                        ),
+                        child: AutoSizeText(
+                          widget.measurement.title.maybeHandleOverflow(
+                            maxChars: 30,
+                            replacement: '…',
+                          ),
+                          textAlign: TextAlign.start,
+                          style: FlutterFlowTheme.subtitle1.override(
+                            fontFamily: 'Comfortaa',
+                            color: FlutterFlowTheme.bGColor2Text1,
+                          ),
                         ),
                       ),
-                    );
-                  },
-                  onDoubleTap: () async {
-                    final measurementsUpdateData = createMeasurementsRecordData(
-                      isFavorite: !(widget.measurement.isFavorite),
-                    );
-                    await widget.measurement.reference
-                        .update(measurementsUpdateData);
-                  },
-                  onLongPress: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      barrierColor: Color(0x80000000),
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height * 0.2,
-                          child: MesurementActionsIconsWidget(
-                            measurement: widget.measurement,
-                            returnTo: widget.returnTo,
-                            groupIndex: widget.groupIndex,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Color(0x00EEEEEE),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
+                      Visibility(
+                        visible:
+                            functions.isHasValue(widget.measurement.desc) ??
+                                true,
+                        child: Container(
                           width: double.infinity,
                           constraints: BoxConstraints(
-                            maxHeight: 40,
+                            maxHeight: 20,
                           ),
                           decoration: BoxDecoration(
                             color: Color(0x00EEEEEE),
                           ),
                           child: AutoSizeText(
-                            widget.measurement.title.maybeHandleOverflow(
-                              maxChars: 30,
+                            widget.measurement.desc.maybeHandleOverflow(
+                              maxChars: 20,
                               replacement: '…',
                             ),
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.subtitle1.override(
+                            style: FlutterFlowTheme.bodyText2.override(
                               fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
+                              color: FlutterFlowTheme.bGColor2Text2,
                             ),
                           ),
                         ),
-                        Visibility(
-                          visible:
-                              functions.isHasValue(widget.measurement.desc) ??
-                                  true,
-                          child: Container(
-                            width: double.infinity,
-                            constraints: BoxConstraints(
-                              maxHeight: 20,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color(0x00EEEEEE),
-                            ),
-                            child: AutoSizeText(
-                              widget.measurement.desc.maybeHandleOverflow(
-                                maxChars: 20,
-                                replacement: '…',
-                              ),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.bodyText2.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.bGColor2Text2,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
