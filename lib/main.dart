@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
-
+import 'backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:logger/login/login_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
   Stream<LoggerFirebaseUser> userStream;
   LoggerFirebaseUser initialUser;
   final authUserSub = authenticatedUserStream.listen((_) {});
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
@@ -40,7 +41,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     authUserSub.cancel();
-
+    fcmTokenSub.cancel();
     super.dispose();
   }
 
@@ -56,17 +57,18 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null
-          ? Container(
-              color: Colors.transparent,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/preloader.gif',
-                  fit: BoxFit.contain,
+          ? const Center(
+              child: SizedBox(
+                width: 24,
+                height: 24,
+                child: SpinKitPulse(
+                  color: FlutterFlowTheme.primaryColor,
+                  size: 24,
                 ),
               ),
             )
           : currentUser.loggedIn
-              ? NavBarPage()
+              ? PushNotificationsHandler(child: NavBarPage())
               : LoginWidget(),
     );
   }
