@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ValueActionsIconWidget extends StatefulWidget {
-  ValueActionsIconWidget({
+  const ValueActionsIconWidget({
     Key key,
     this.currentValue,
   }) : super(key: key);
@@ -25,7 +25,7 @@ class _ValueActionsIconWidgetState extends State<ValueActionsIconWidget> {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.bGColor2,
+        color: FlutterFlowTheme.of(context).bGColor2,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -40,18 +40,18 @@ class _ValueActionsIconWidgetState extends State<ValueActionsIconWidget> {
                 borderRadius: 10,
                 borderWidth: 1,
                 buttonSize: 60,
-                fillColor: FlutterFlowTheme.trnsparentMain,
+                fillColor: FlutterFlowTheme.of(context).trnsparentMain,
                 icon: Icon(
                   Icons.delete,
-                  color: FlutterFlowTheme.primaryColor,
+                  color: FlutterFlowTheme.of(context).primaryColor,
                   size: 30,
                 ),
                 onPressed: () async {
                   await widget.currentValue.delete();
                 },
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

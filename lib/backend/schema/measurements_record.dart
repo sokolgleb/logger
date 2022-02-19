@@ -108,6 +108,10 @@ abstract class MeasurementsRecord
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
+  static Future<MeasurementsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then(
+          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+
   MeasurementsRecord._();
   factory MeasurementsRecord(
           [void Function(MeasurementsRecordBuilder) updates]) =

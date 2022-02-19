@@ -10,7 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditGroupWidget extends StatefulWidget {
-  EditGroupWidget({
+  const EditGroupWidget({
     Key key,
     this.userGroupsCount,
     this.currentGroup,
@@ -39,39 +39,40 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
-        stream: queryMeasurementIndicatorTypesRecord(
-          queryBuilder: (measurementIndicatorTypesRecord) =>
-              measurementIndicatorTypesRecord
-                  .where('active', isEqualTo: true)
-                  .orderBy('order'),
-        ),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: SpinKitPulse(
-                  color: FlutterFlowTheme.primaryColor,
-                  size: 24,
-                ),
+    return StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
+      stream: queryMeasurementIndicatorTypesRecord(
+        queryBuilder: (measurementIndicatorTypesRecord) =>
+            measurementIndicatorTypesRecord
+                .where('active', isEqualTo: true)
+                .orderBy('order'),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 24,
+              height: 24,
+              child: SpinKitPulse(
+                color: FlutterFlowTheme.of(context).primaryColor,
+                size: 24,
               ),
-            );
-          }
-          List<MeasurementIndicatorTypesRecord>
-              editGroupMeasurementIndicatorTypesRecordList = snapshot.data;
-          return Scaffold(
-            key: scaffoldKey,
-            backgroundColor: Colors.transparent,
-            body: Container(
+            ),
+          );
+        }
+        List<MeasurementIndicatorTypesRecord>
+            editGroupMeasurementIndicatorTypesRecordList = snapshot.data;
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.transparent,
+          body: Form(
+            key: formKey,
+            autovalidateMode: AutovalidateMode.disabled,
+            child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.bGColor1,
+                color: FlutterFlowTheme.of(context).bGColor1,
               ),
               child: Stack(
                 children: [
@@ -83,7 +84,7 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.bGColor1,
+                          color: FlutterFlowTheme.of(context).bGColor1,
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -101,7 +102,8 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                   fillColor: Color(0x00FFFFFF),
                                   icon: Icon(
                                     Icons.arrow_back_ios_sharp,
-                                    color: FlutterFlowTheme.bGColor1Text2,
+                                    color: FlutterFlowTheme.of(context)
+                                        .bGColor1Text2,
                                     size: 24,
                                   ),
                                   onPressed: () async {
@@ -132,10 +134,14 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                     children: [
                                       Text(
                                         'Edit',
-                                        style: FlutterFlowTheme.title1.override(
-                                          fontFamily: 'Comfortaa',
-                                          color: FlutterFlowTheme.bGColor1Text1,
-                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .title1
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor1Text1,
+                                            ),
                                       ),
                                       Align(
                                         alignment:
@@ -146,19 +152,21 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                                   5, 0, 0, 5),
                                           child: Text(
                                             'group',
-                                            style: FlutterFlowTheme.bodyText2
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2
                                                 .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor1Text2,
-                                            ),
+                                                  fontFamily: 'Comfortaa',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bGColor1Text2,
+                                                ),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -167,7 +175,7 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.bGColor2,
+                            color: FlutterFlowTheme.of(context).bGColor2,
                           ),
                           child: Padding(
                             padding:
@@ -186,12 +194,16 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                     controller: groupTitleController,
                                     obscureText: false,
                                     decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyText2,
                                       hintText: 'title',
-                                      hintStyle:
-                                          FlutterFlowTheme.title2.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.bGColor2Text2,
-                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .title2
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .bGColor2Text2,
+                                          ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
@@ -213,25 +225,21 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                         ),
                                       ),
                                     ),
-                                    style: FlutterFlowTheme.title3.override(
-                                      fontFamily: 'Comfortaa',
-                                      color: FlutterFlowTheme.bGColor2Text1,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Comfortaa',
+                                          color: FlutterFlowTheme.of(context)
+                                              .bGColor2Text1,
+                                        ),
                                     textAlign: TextAlign.center,
-                                    validator: (val) {
-                                      if (val.isEmpty) {
-                                        return 'Title is required field';
-                                      }
-
-                                      return null;
-                                    },
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Align(
@@ -246,9 +254,8 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Visibility(
-                            visible: (widget.userGroupsCount) > (1),
-                            child: Align(
+                          if ((widget.userGroupsCount) > 1)
+                            Align(
                               alignment: AlignmentDirectional(0, 1),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
@@ -257,7 +264,8 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                 fillColor: Colors.transparent,
                                 icon: Icon(
                                   Icons.delete,
-                                  color: FlutterFlowTheme.primaryColor,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
                                   size: 30,
                                 ),
                                 onPressed: () async {
@@ -299,20 +307,23 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                     SnackBar(
                                       content: Text(
                                         'Undo deletion',
-                                        style:
-                                            FlutterFlowTheme.bodyText1.override(
-                                          fontFamily: 'Comfortaa',
-                                          color:
-                                              FlutterFlowTheme.secondaryColor,
-                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                            ),
                                       ),
                                       duration: Duration(milliseconds: 5000),
                                       backgroundColor:
-                                          FlutterFlowTheme.tertiaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
                                       action: SnackBarAction(
                                         label: 'Yes, restore',
-                                        textColor:
-                                            FlutterFlowTheme.secondaryColor,
+                                        textColor: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
                                         onPressed: () async {
                                           final groupsUpdateData =
                                               createGroupsRecordData(
@@ -328,7 +339,6 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                 },
                               ),
                             ),
-                          ),
                           Align(
                             alignment: AlignmentDirectional(0, 1),
                             child: FlutterFlowIconButton(
@@ -338,13 +348,11 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                               fillColor: Colors.transparent,
                               icon: Icon(
                                 Icons.check_outlined,
-                                color: FlutterFlowTheme.primaryColor,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 size: 30,
                               ),
                               onPressed: () async {
-                                if (!formKey.currentState.validate()) {
-                                  return;
-                                }
                                 final groupsUpdateData = createGroupsRecordData(
                                   title: groupTitleController.text,
                                   updatedAt: getCurrentTimestamp,
@@ -354,17 +362,17 @@ class _EditGroupWidgetState extends State<EditGroupWidget> {
                                 Navigator.pop(context);
                               },
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

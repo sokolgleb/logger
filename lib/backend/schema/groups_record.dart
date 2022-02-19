@@ -59,6 +59,10 @@ abstract class GroupsRecord
       .snapshots()
       .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
+  static Future<GroupsRecord> getDocumentOnce(DocumentReference ref) => ref
+      .get()
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+
   GroupsRecord._();
   factory GroupsRecord([void Function(GroupsRecordBuilder) updates]) =
       _$GroupsRecord;

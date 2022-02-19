@@ -15,7 +15,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MeasurementItemWidget extends StatefulWidget {
-  MeasurementItemWidget({
+  const MeasurementItemWidget({
     Key key,
     this.measurement,
     this.returnTo,
@@ -44,9 +44,8 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Visibility(
-              visible: functions.isHasImage(widget.measurement.image) ?? true,
-              child: Padding(
+            if (functions.isHasImage(widget.measurement.image) ?? true)
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                 child: Container(
                   width: 60,
@@ -66,12 +65,11 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                           height: 55,
                           fit: BoxFit.cover,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
-            ),
             Expanded(
               child: InkWell(
                 onTap: () async {
@@ -100,12 +98,15 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                     barrierColor: Color(0x80000000),
                     context: context,
                     builder: (context) {
-                      return Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: MesurementActionsIconsWidget(
-                          measurement: widget.measurement,
-                          returnTo: widget.returnTo,
-                          groupIndex: widget.groupIndex,
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: MesurementActionsIconsWidget(
+                            measurement: widget.measurement,
+                            returnTo: widget.returnTo,
+                            groupIndex: widget.groupIndex,
+                          ),
                         ),
                       );
                     },
@@ -133,17 +134,17 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                             replacement: '…',
                           ),
                           textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Comfortaa',
-                            color: FlutterFlowTheme.bGColor2Text1,
-                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .subtitle1
+                              .override(
+                                fontFamily: 'Comfortaa',
+                                color:
+                                    FlutterFlowTheme.of(context).bGColor2Text1,
+                              ),
                         ),
                       ),
-                      Visibility(
-                        visible:
-                            functions.isHasValue(widget.measurement.desc) ??
-                                true,
-                        child: Container(
+                      if (functions.isHasValue(widget.measurement.desc) ?? true)
+                        Container(
                           width: double.infinity,
                           constraints: BoxConstraints(
                             maxHeight: 20,
@@ -157,13 +158,14 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                               replacement: '…',
                             ),
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
                         ),
-                      )
                     ],
                   ),
                 ),
@@ -182,9 +184,8 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Visibility(
-                        visible: widget.measurement.isFavorite ?? true,
-                        child: Align(
+                      if (widget.measurement.isFavorite ?? true)
+                        Align(
                           alignment: AlignmentDirectional(1, 0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -194,7 +195,7 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                             fillColor: Colors.transparent,
                             icon: Icon(
                               Icons.playlist_add,
-                              color: FlutterFlowTheme.primaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               size: 24,
                             ),
                             onPressed: () async {
@@ -209,10 +210,8 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                             },
                           ),
                         ),
-                      ),
-                      Visibility(
-                        visible: !(widget.measurement.isFavorite) ?? true,
-                        child: Align(
+                      if (!(widget.measurement.isFavorite) ?? true)
+                        Align(
                           alignment: AlignmentDirectional(1, 0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -222,7 +221,7 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                             fillColor: Colors.transparent,
                             icon: Icon(
                               Icons.playlist_add,
-                              color: FlutterFlowTheme.bGColor2Text2,
+                              color: FlutterFlowTheme.of(context).bGColor2Text2,
                               size: 24,
                             ),
                             onPressed: () async {
@@ -237,12 +236,11 @@ class _MeasurementItemWidgetState extends State<MeasurementItemWidget> {
                             },
                           ),
                         ),
-                      )
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

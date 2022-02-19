@@ -11,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GroupActionsWidget extends StatefulWidget {
-  GroupActionsWidget({
+  const GroupActionsWidget({
     Key key,
     this.group,
     this.groupIndex,
@@ -33,7 +33,7 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.bGColor2,
+        color: FlutterFlowTheme.of(context).bGColor2,
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
@@ -64,10 +64,12 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Edit',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text1,
+                                    ),
                           ),
                         ),
                         Container(
@@ -77,12 +79,14 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Change group data',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -92,7 +96,7 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.edit_sharp,
-                        color: FlutterFlowTheme.tertiaryColor,
+                        color: FlutterFlowTheme.of(context).tertiaryColor,
                         size: 30,
                       ),
                       onPressed: () async {
@@ -108,7 +112,7 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -136,10 +140,12 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Archive',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text1,
+                                    ),
                           ),
                         ),
                         Container(
@@ -149,12 +155,14 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Move all your measurements from current group to the archive',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -164,7 +172,7 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.archive_sharp,
-                        color: FlutterFlowTheme.tertiaryColor,
+                        color: FlutterFlowTheme.of(context).tertiaryColor,
                         size: 30,
                       ),
                       onPressed: () async {
@@ -205,16 +213,21 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           SnackBar(
                             content: Text(
                               'Un-archive group',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.secondaryColor,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Comfortaa',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                  ),
                             ),
                             duration: Duration(milliseconds: 5000),
-                            backgroundColor: FlutterFlowTheme.tertiaryColor,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).tertiaryColor,
                             action: SnackBarAction(
                               label: 'Yes, return',
-                              textColor: FlutterFlowTheme.secondaryColor,
+                              textColor:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                               onPressed: () async {
                                 final groupsUpdateData = createGroupsRecordData(
                                   status: 'ACTIVE',
@@ -227,14 +240,13 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
-            Visibility(
-              visible: (widget.userGroupsCount) > (1),
-              child: Padding(
+            if ((widget.userGroupsCount) > 1)
+              Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
                 child: Container(
                   width: double.infinity,
@@ -257,10 +269,13 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                             ),
                             child: AutoSizeText(
                               'Delete',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.bGColor2Text1,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Comfortaa',
+                                    color: FlutterFlowTheme.of(context)
+                                        .bGColor2Text1,
+                                  ),
                             ),
                           ),
                           Container(
@@ -270,12 +285,15 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                             ),
                             child: AutoSizeText(
                               'All your measurements also will be deleted',
-                              style: FlutterFlowTheme.bodyText2.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.bGColor2Text2,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText2
+                                  .override(
+                                    fontFamily: 'Comfortaa',
+                                    color: FlutterFlowTheme.of(context)
+                                        .bGColor2Text2,
+                                  ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       FlutterFlowIconButton(
@@ -285,7 +303,7 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                         buttonSize: 60,
                         icon: Icon(
                           Icons.delete,
-                          color: FlutterFlowTheme.primaryColor,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                           size: 30,
                         ),
                         onPressed: () async {
@@ -326,16 +344,21 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                             SnackBar(
                               content: Text(
                                 'Undo deletion',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Comfortaa',
-                                  color: FlutterFlowTheme.secondaryColor,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                    ),
                               ),
                               duration: Duration(milliseconds: 5000),
-                              backgroundColor: FlutterFlowTheme.tertiaryColor,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).tertiaryColor,
                               action: SnackBarAction(
                                 label: 'Yes, restore',
-                                textColor: FlutterFlowTheme.secondaryColor,
+                                textColor:
+                                    FlutterFlowTheme.of(context).secondaryColor,
                                 onPressed: () async {
                                   final groupsUpdateData =
                                       createGroupsRecordData(
@@ -349,12 +372,11 @@ class _GroupActionsWidgetState extends State<GroupActionsWidget> {
                             ),
                           );
                         },
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
-            )
           ],
         ),
       ),

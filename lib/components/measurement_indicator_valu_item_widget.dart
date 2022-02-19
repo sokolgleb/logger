@@ -10,7 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MeasurementIndicatorValuItemWidget extends StatefulWidget {
-  MeasurementIndicatorValuItemWidget({
+  const MeasurementIndicatorValuItemWidget({
     Key key,
     this.currentValue,
   }) : super(key: key);
@@ -35,56 +35,47 @@ class _MeasurementIndicatorValuItemWidgetState
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Visibility(
-            visible: (widget.currentValue.type) == ('Number'),
-            child: AutoSizeText(
+          if ((widget.currentValue.type) == 'Number')
+            AutoSizeText(
               functions.getFixedDouble(widget.currentValue.numberValue),
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Text'),
-            child: AutoSizeText(
+          if ((widget.currentValue.type) == 'Text')
+            AutoSizeText(
               widget.currentValue.textValue.maybeHandleOverflow(
                 maxChars: 30,
                 replacement: '…',
               ),
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Slider'),
-            child: Text(
+          if ((widget.currentValue.type) == 'Slider')
+            Text(
               '${functions.getFixedDouble(widget.currentValue.sliderValue)} / 10',
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Rating'),
-            child: Text(
+          if ((widget.currentValue.type) == 'Rating')
+            Text(
               '${widget.currentValue.ratingValue.toString()} / 5',
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Image'),
-            child: ClipRRect(
+          if ((widget.currentValue.type) == 'Image')
+            ClipRRect(
               borderRadius: BorderRadius.circular(1),
               child: CachedNetworkImage(
                 imageUrl: widget.currentValue.imageValue,
@@ -93,10 +84,8 @@ class _MeasurementIndicatorValuItemWidgetState
                 fit: BoxFit.cover,
               ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Video'),
-            child: FlutterFlowVideoPlayer(
+          if ((widget.currentValue.type) == 'Video')
+            FlutterFlowVideoPlayer(
               path: widget.currentValue.videoValue,
               videoType: VideoType.network,
               width: 50,
@@ -107,31 +96,26 @@ class _MeasurementIndicatorValuItemWidgetState
               allowFullScreen: false,
               allowPlaybackSpeedMenu: false,
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Switch'),
-            child: Text(
+          if ((widget.currentValue.type) == 'Switch')
+            Text(
               functions
                   .getHumanReadableSwitchValue(widget.currentValue.switchValue),
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          ),
-          Visibility(
-            visible: (widget.currentValue.type) == ('Time'),
-            child: Text(
+          if ((widget.currentValue.type) == 'Time')
+            Text(
               functions
                   .getHumanReadableTimeValue(widget.currentValue.timeValue),
-              style: FlutterFlowTheme.bodyText1.override(
-                fontFamily: 'Comfortaa',
-                color: FlutterFlowTheme.bGColor2Text1,
-                fontSize: 14,
-              ),
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Comfortaa',
+                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                    fontSize: 14,
+                  ),
             ),
-          )
         ],
       ),
     );

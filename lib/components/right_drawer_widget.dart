@@ -11,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RightDrawerWidget extends StatefulWidget {
-  RightDrawerWidget({
+  const RightDrawerWidget({
     Key key,
     this.userGroupsCount,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.bGColor1,
+        color: FlutterFlowTheme.of(context).bGColor1,
       ),
       child: Stack(
         children: [
@@ -42,7 +42,7 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.2,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.bGColor1,
+                    color: FlutterFlowTheme.of(context).bGColor1,
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -50,11 +50,11 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                     children: [
                       AutoSizeText(
                         'groups',
-                        style: FlutterFlowTheme.title1.override(
-                          fontFamily: 'Comfortaa',
-                          color: FlutterFlowTheme.tertiary05,
-                        ),
-                      )
+                        style: FlutterFlowTheme.of(context).title1.override(
+                              fontFamily: 'Comfortaa',
+                              color: FlutterFlowTheme.of(context).tertiary05,
+                            ),
+                      ),
                     ],
                   ),
                 ),
@@ -64,7 +64,7 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.bGColor2,
+                    color: FlutterFlowTheme.of(context).bGColor2,
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 60),
@@ -83,7 +83,8 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                               width: 24,
                               height: 24,
                               child: SpinKitPulse(
-                                color: FlutterFlowTheme.primaryColor,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                                 size: 24,
                               ),
                             ),
@@ -145,15 +146,17 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                                           child: AutoSizeText(
                                             columnGroupsRecord.title,
                                             textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.subtitle1
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle1
                                                 .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor2Text1,
-                                            ),
+                                                  fontFamily: 'Comfortaa',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bGColor2Text1,
+                                                ),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -165,7 +168,7 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           Align(
@@ -186,10 +189,10 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                     borderRadius: 10,
                     borderWidth: 1,
                     buttonSize: 40,
-                    fillColor: FlutterFlowTheme.primaryColor,
+                    fillColor: FlutterFlowTheme.of(context).primaryColor,
                     icon: Icon(
                       Icons.add,
-                      color: FlutterFlowTheme.secondaryColor,
+                      color: FlutterFlowTheme.of(context).secondaryColor,
                       size: 24,
                     ),
                     onPressed: () async {
@@ -202,11 +205,11 @@ class _RightDrawerWidgetState extends State<RightDrawerWidget> {
                         ),
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

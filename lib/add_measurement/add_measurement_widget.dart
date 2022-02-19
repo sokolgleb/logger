@@ -11,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddMeasurementWidget extends StatefulWidget {
-  AddMeasurementWidget({
+  const AddMeasurementWidget({
     Key key,
     this.currentGroup,
   }) : super(key: key);
@@ -40,39 +40,40 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
-        stream: queryMeasurementIndicatorTypesRecord(
-          queryBuilder: (measurementIndicatorTypesRecord) =>
-              measurementIndicatorTypesRecord
-                  .where('active', isEqualTo: true)
-                  .orderBy('order'),
-        ),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: SpinKitPulse(
-                  color: FlutterFlowTheme.primaryColor,
-                  size: 24,
-                ),
+    return StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
+      stream: queryMeasurementIndicatorTypesRecord(
+        queryBuilder: (measurementIndicatorTypesRecord) =>
+            measurementIndicatorTypesRecord
+                .where('active', isEqualTo: true)
+                .orderBy('order'),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 24,
+              height: 24,
+              child: SpinKitPulse(
+                color: FlutterFlowTheme.of(context).primaryColor,
+                size: 24,
               ),
-            );
-          }
-          List<MeasurementIndicatorTypesRecord>
-              addMeasurementMeasurementIndicatorTypesRecordList = snapshot.data;
-          return Scaffold(
-            key: scaffoldKey,
-            backgroundColor: Colors.transparent,
-            body: Container(
+            ),
+          );
+        }
+        List<MeasurementIndicatorTypesRecord>
+            addMeasurementMeasurementIndicatorTypesRecordList = snapshot.data;
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.transparent,
+          body: Form(
+            key: formKey,
+            autovalidateMode: AutovalidateMode.disabled,
+            child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.bGColor1,
+                color: FlutterFlowTheme.of(context).bGColor1,
               ),
               child: Stack(
                 children: [
@@ -84,7 +85,7 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.bGColor1,
+                          color: FlutterFlowTheme.of(context).bGColor1,
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -102,7 +103,8 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                   fillColor: Color(0x00FFFFFF),
                                   icon: Icon(
                                     Icons.arrow_back_ios_sharp,
-                                    color: FlutterFlowTheme.bGColor1Text2,
+                                    color: FlutterFlowTheme.of(context)
+                                        .bGColor1Text2,
                                     size: 24,
                                   ),
                                   onPressed: () async {
@@ -125,10 +127,14 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                     children: [
                                       Text(
                                         'Add',
-                                        style: FlutterFlowTheme.title1.override(
-                                          fontFamily: 'Comfortaa',
-                                          color: FlutterFlowTheme.bGColor1Text1,
-                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .title1
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor1Text1,
+                                            ),
                                       ),
                                       Align(
                                         alignment:
@@ -139,19 +145,21 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                                   5, 0, 0, 5),
                                           child: Text(
                                             'measurement',
-                                            style: FlutterFlowTheme.bodyText2
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2
                                                 .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor1Text2,
-                                            ),
+                                                  fontFamily: 'Comfortaa',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bGColor1Text2,
+                                                ),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -160,7 +168,7 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.bGColor2,
+                            color: FlutterFlowTheme.of(context).bGColor2,
                           ),
                           child: Padding(
                             padding:
@@ -182,27 +190,30 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                         controller: measurementTitleController,
                                         obscureText: false,
                                         decoration: InputDecoration(
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
                                           hintText: 'title*',
-                                          hintStyle:
-                                              FlutterFlowTheme.title2.override(
-                                            fontFamily: 'Comfortaa',
-                                            color:
-                                                FlutterFlowTheme.bGColor2Text2,
-                                          ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .title2
+                                              .override(
+                                                fontFamily: 'Comfortaa',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bGColor2Text2,
+                                              ),
                                           enabledBorder: InputBorder.none,
                                           focusedBorder: InputBorder.none,
                                         ),
-                                        style: FlutterFlowTheme.title3.override(
-                                          fontFamily: 'Comfortaa',
-                                          color: FlutterFlowTheme.bGColor2Text1,
-                                        ),
-                                        validator: (val) {
-                                          if (val.isEmpty) {
-                                            return 'Title is required field';
-                                          }
-
-                                          return null;
-                                        },
+                                        style: FlutterFlowTheme.of(context)
+                                            .title3
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor2Text1,
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -218,8 +229,13 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                         controller: textController2,
                                         obscureText: false,
                                         decoration: InputDecoration(
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText1,
                                           hintText: 'desc',
-                                          hintStyle: FlutterFlowTheme.bodyText2,
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0x00000000),
@@ -243,7 +259,8 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                             ),
                                           ),
                                         ),
-                                        style: FlutterFlowTheme.bodyText1,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
                                         maxLines: 5,
                                       ),
                                     ),
@@ -262,34 +279,36 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                           Text(
                                             'This will be logged as',
                                             textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.bodyText2
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2
                                                 .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor2Text2,
-                                            ),
+                                                  fontFamily: 'Comfortaa',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bGColor2Text2,
+                                                ),
                                           ),
                                           FlutterFlowDropDown(
                                             initialOption: dropDownValue ??=
                                                 'Number',
-                                            options: functions
-                                                .prepareMeasurementIndicatorTypes(
-                                                    addMeasurementMeasurementIndicatorTypesRecordList
-                                                        .toList())
-                                                .toList(),
+                                            options: [].toList(),
                                             onChanged: (val) => setState(
                                                 () => dropDownValue = val),
                                             width: 130,
                                             height: 30,
-                                            textStyle: FlutterFlowTheme
-                                                .bodyText1
-                                                .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor2Text1,
-                                            ),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Comfortaa',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bGColor2Text1,
+                                                    ),
                                             fillColor:
-                                                FlutterFlowTheme.bGColor2,
+                                                FlutterFlowTheme.of(context)
+                                                    .bGColor2,
                                             elevation: 2,
                                             borderColor: Colors.transparent,
                                             borderWidth: 0,
@@ -298,16 +317,15 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     8, 4, 8, 4),
                                             hidesUnderline: true,
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                  Visibility(
-                                    visible: functions.isDefCheckboxAvailable(
-                                            dropDownValue) ??
-                                        true,
-                                    child: Padding(
+                                  if (functions.isDefCheckboxAvailable(
+                                          dropDownValue) ??
+                                      true)
+                                    Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 20),
                                       child: Container(
@@ -315,37 +333,47 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                         decoration: BoxDecoration(
                                           color: Color(0x00EEEEEE),
                                         ),
-                                        child: CheckboxListTile(
-                                          value: checkboxListTileValue ??=
-                                              false,
-                                          onChanged: (newValue) => setState(
-                                              () => checkboxListTileValue =
-                                                  newValue),
-                                          title: Text(
-                                            'Use previous value as default',
-                                            style: FlutterFlowTheme.bodyText2,
+                                        child: Theme(
+                                          data: ThemeData(
+                                            unselectedWidgetColor:
+                                                Color(0xFF707070),
                                           ),
-                                          tileColor: Color(0x00FF0000),
-                                          activeColor:
-                                              FlutterFlowTheme.primaryColor,
-                                          checkColor:
-                                              FlutterFlowTheme.secondaryColor,
-                                          dense: false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.trailing,
-                                          contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 32, 0),
+                                          child: CheckboxListTile(
+                                            value: checkboxListTileValue ??=
+                                                false,
+                                            onChanged: (newValue) => setState(
+                                                () => checkboxListTileValue =
+                                                    newValue),
+                                            title: Text(
+                                              'Use previous value as default',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2,
+                                            ),
+                                            tileColor: Color(0x00FF0000),
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryColor,
+                                            dense: false,
+                                            controlAffinity:
+                                                ListTileControlAffinity
+                                                    .trailing,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 32, 0),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  )
                                 ],
                               ),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Align(
@@ -367,15 +395,13 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                             fillColor: Colors.transparent,
                             icon: Icon(
                               Icons.check_outlined,
-                              color: FlutterFlowTheme.primaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               size: 30,
                             ),
                             onPressed: () async {
-                              if (!formKey.currentState.validate()) {
-                                return;
-                              }
-                              await getCurrentUserLocation(
-                                  defaultLocation: LatLng(0.0, 0.0));
+                              currentUserLocationValue =
+                                  await getCurrentUserLocation(
+                                      defaultLocation: LatLng(0.0, 0.0));
                               final measurementsCreateData = {
                                 ...createMeasurementsRecordData(
                                   title: valueOrDefault<String>(
@@ -399,27 +425,25 @@ class _AddMeasurementWidgetState extends State<AddMeasurementWidget> {
                                   valuesCount: 0,
                                   owner: currentUserReference,
                                 ),
-                                'users': FieldValue.arrayUnion(
-                                    [currentUserReference]),
-                                'groups': FieldValue.arrayUnion(
-                                    [widget.currentGroup]),
+                                'users': [currentUserReference],
+                                'groups': [widget.currentGroup],
                               };
                               await MeasurementsRecord.collection
                                   .doc()
                                   .set(measurementsCreateData);
                               Navigator.pop(context);
                             },
-                          )
+                          ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsWidget extends StatefulWidget {
-  SettingsWidget({Key key}) : super(key: key);
+  const SettingsWidget({Key key}) : super(key: key);
 
   @override
   _SettingsWidgetState createState() => _SettingsWidgetState();
@@ -25,7 +25,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.bGColor1,
+          color: FlutterFlowTheme.of(context).bGColor1,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -35,7 +35,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.bGColor1,
+                color: FlutterFlowTheme.of(context).bGColor1,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -58,13 +58,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                             child: Text(
                               'Settings',
-                              style: FlutterFlowTheme.title1,
+                              style: FlutterFlowTheme.of(context).title1,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -72,7 +72,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.bGColor2,
+                  color: FlutterFlowTheme.of(context).bGColor2,
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -88,7 +88,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.bGColor1,
+                                color: FlutterFlowTheme.of(context).bGColor1,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -96,8 +96,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.transparentTertiary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .transparentTertiary,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Padding(
@@ -110,16 +110,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         children: [
                                           Text(
                                             'Maybe you want to unarchive',
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
                                           Text(
                                             'your groups?',
-                                            style: FlutterFlowTheme.bodyText1,
-                                          )
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
                                         ],
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -127,7 +129,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.bGColor1,
+                              color: FlutterFlowTheme.of(context).bGColor1,
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -135,7 +137,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.trnsparentMain,
+                                    color: FlutterFlowTheme.of(context)
+                                        .trnsparentMain,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -148,15 +151,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       children: [
                                         Text(
                                           'Yeah! The time has come',
-                                          style: FlutterFlowTheme.bodyText1,
-                                        )
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Divider(
@@ -164,7 +168,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         thickness: 1,
                         indent: 10,
                         endIndent: 10,
-                        color: FlutterFlowTheme.tertiary05,
+                        color: FlutterFlowTheme.of(context).tertiary05,
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
@@ -175,7 +179,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.bGColor1,
+                                color: FlutterFlowTheme.of(context).bGColor1,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -183,8 +187,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.transparentTertiary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .transparentTertiary,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Padding(
@@ -197,16 +201,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         children: [
                                           Text(
                                             'Maybe you want to restore',
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
                                           Text(
                                             'your deleted groups/measurements?',
-                                            style: FlutterFlowTheme.bodyText1,
-                                          )
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
                                         ],
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -214,7 +220,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.bGColor1,
+                              color: FlutterFlowTheme.of(context).bGColor1,
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -222,7 +228,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.trnsparentMain,
+                                    color: FlutterFlowTheme.of(context)
+                                        .trnsparentMain,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Padding(
@@ -235,19 +242,21 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       children: [
                                         Text(
                                           'Whaaat? Really?',
-                                          style: FlutterFlowTheme.bodyText1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
                                         ),
                                         Text(
                                           'Can I do this?',
-                                          style: FlutterFlowTheme.bodyText1,
-                                        )
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Divider(
@@ -255,7 +264,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         thickness: 1,
                         indent: 10,
                         endIndent: 10,
-                        color: FlutterFlowTheme.tertiary05,
+                        color: FlutterFlowTheme.of(context).tertiary05,
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.max,
@@ -266,7 +275,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.bGColor1,
+                                color: FlutterFlowTheme.of(context).bGColor1,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -274,7 +283,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.trnsparentMain,
+                                      color: FlutterFlowTheme.of(context)
+                                          .trnsparentMain,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Padding(
@@ -287,16 +297,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         children: [
                                           Text(
                                             'Look, I\'m so tired...',
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
                                           Text(
                                             'Maybe we should take a break?',
-                                            style: FlutterFlowTheme.bodyText1,
-                                          )
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
                                         ],
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -304,7 +316,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.bGColor1,
+                              color: FlutterFlowTheme.of(context).bGColor1,
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -323,8 +335,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.transparentTertiary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .transparentTertiary,
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Padding(
@@ -337,31 +349,34 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         children: [
                                           Text(
                                             'No! Please, not!',
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
                                           Text(
                                             'But if you really need it... OK...',
-                                            style: FlutterFlowTheme.bodyText1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
                                           Text(
                                             'Just logout from app...',
-                                            style: FlutterFlowTheme.bodyText1,
-                                          )
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

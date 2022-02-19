@@ -17,7 +17,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MainWidget extends StatefulWidget {
-  MainWidget({
+  const MainWidget({
     Key key,
     this.groupIndex,
     this.parentGroup,
@@ -51,7 +51,7 @@ class _MainWidgetState extends State<MainWidget> {
               width: 24,
               height: 24,
               child: SpinKitPulse(
-                color: FlutterFlowTheme.primaryColor,
+                color: FlutterFlowTheme.of(context).primaryColor,
                 size: 24,
               ),
             ),
@@ -74,7 +74,7 @@ class _MainWidgetState extends State<MainWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.bGColor1,
+              color: FlutterFlowTheme.of(context).bGColor1,
               boxShadow: [
                 BoxShadow(
                   color: Colors.transparent,
@@ -118,7 +118,8 @@ class _MainWidgetState extends State<MainWidget> {
                                   height:
                                       MediaQuery.of(context).size.height * 0.2,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.bGColor1,
+                                    color:
+                                        FlutterFlowTheme.of(context).bGColor1,
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.transparent,
@@ -186,21 +187,27 @@ class _MainWidgetState extends State<MainWidget> {
                                                                 0x80000000),
                                                             context: context,
                                                             builder: (context) {
-                                                              return Container(
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.2,
+                                                              return Padding(
+                                                                padding: MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
                                                                 child:
-                                                                    GroupActionsIconsWidget(
-                                                                  group:
-                                                                      userGroupsItem,
-                                                                  groupIndex:
-                                                                      userGroupsIndex,
-                                                                  userGroupsCount:
-                                                                      mainGroupsRecordList
-                                                                          .length,
+                                                                    Container(
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.2,
+                                                                  child:
+                                                                      GroupActionsIconsWidget(
+                                                                    group:
+                                                                        userGroupsItem,
+                                                                    groupIndex:
+                                                                        userGroupsIndex,
+                                                                    userGroupsCount:
+                                                                        mainGroupsRecordList
+                                                                            .length,
+                                                                  ),
                                                                 ),
                                                               );
                                                             },
@@ -208,18 +215,19 @@ class _MainWidgetState extends State<MainWidget> {
                                                         },
                                                         child: AutoSizeText(
                                                           userGroupsItem.title,
-                                                          style:
-                                                              FlutterFlowTheme
-                                                                  .title1
-                                                                  .override(
-                                                            fontFamily:
-                                                                'Comfortaa',
-                                                            color: FlutterFlowTheme
-                                                                .bGColor1Text1,
-                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .title1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Comfortaa',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bGColor1Text1,
+                                                              ),
                                                         ),
                                                       ),
-                                                    )
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -230,7 +238,7 @@ class _MainWidgetState extends State<MainWidget> {
                                           decoration: BoxDecoration(
                                             color: Color(0x00EEEEEE),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -239,7 +247,8 @@ class _MainWidgetState extends State<MainWidget> {
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.bGColor2,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor2,
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.transparent,
@@ -275,7 +284,8 @@ class _MainWidgetState extends State<MainWidget> {
                                                   width: 24,
                                                   height: 24,
                                                   child: SpinKitPulse(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .primaryColor,
                                                     size: 24,
                                                   ),
@@ -341,11 +351,13 @@ class _MainWidgetState extends State<MainWidget> {
                                               borderWidth: 1,
                                               buttonSize: 40,
                                               fillColor:
-                                                  FlutterFlowTheme.primaryColor,
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
                                               icon: Icon(
                                                 Icons.add,
-                                                color: FlutterFlowTheme
-                                                    .secondaryColor,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
                                                 size: 24,
                                               ),
                                               onPressed: () async {
@@ -363,11 +375,11 @@ class _MainWidgetState extends State<MainWidget> {
                                               },
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           );
@@ -396,8 +408,10 @@ class _MainWidgetState extends State<MainWidget> {
                               radius: 4,
                               dotWidth: 4,
                               dotHeight: 4,
-                              dotColor: FlutterFlowTheme.tertiaryColor,
-                              activeDotColor: FlutterFlowTheme.primaryColor,
+                              dotColor:
+                                  FlutterFlowTheme.of(context).tertiaryColor,
+                              activeDotColor:
+                                  FlutterFlowTheme.of(context).primaryColor,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),

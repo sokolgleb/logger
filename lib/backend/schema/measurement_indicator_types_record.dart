@@ -45,6 +45,11 @@ abstract class MeasurementIndicatorTypesRecord
       ref.snapshots().map(
           (s) => serializers.deserializeWith(serializer, serializedData(s)));
 
+  static Future<MeasurementIndicatorTypesRecord> getDocumentOnce(
+          DocumentReference ref) =>
+      ref.get().then(
+          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+
   MeasurementIndicatorTypesRecord._();
   factory MeasurementIndicatorTypesRecord(
           [void Function(MeasurementIndicatorTypesRecordBuilder) updates]) =

@@ -2,13 +2,13 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../main.dart';
+import '../main/main_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterWidget extends StatefulWidget {
-  RegisterWidget({Key key}) : super(key: key);
+  const RegisterWidget({Key key}) : super(key: key);
 
   @override
   _RegisterWidgetState createState() => _RegisterWidgetState();
@@ -41,7 +41,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.bGColor1,
+          color: FlutterFlowTheme.of(context).bGColor1,
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(30, 40, 30, 40),
@@ -64,10 +64,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       Text(
                         'create',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.title1.override(
-                          fontFamily: 'Comfortaa',
-                          color: FlutterFlowTheme.primaryColor,
-                        ),
+                        style: FlutterFlowTheme.of(context).title1.override(
+                              fontFamily: 'Comfortaa',
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                            ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
@@ -77,10 +77,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           ),
                           child: Text(
                             'account',
-                            style: FlutterFlowTheme.bodyText2,
+                            style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -110,30 +110,35 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 controller: emailTextController,
                                 obscureText: false,
                                 decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).subtitle1,
                                   hintText: 'email',
-                                  hintStyle: FlutterFlowTheme.bodyText2,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.transparentTertiary,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .transparentTertiary,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 10, 0),
                                 ),
-                                style: FlutterFlowTheme.bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
                           ),
@@ -149,25 +154,30 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 controller: passwordTextController,
                                 obscureText: !passwordVisibility1,
                                 decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).subtitle1,
                                   hintText: 'password',
-                                  hintStyle: FlutterFlowTheme.bodyText2,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.transparentTertiary,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .transparentTertiary,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 10, 0),
@@ -180,12 +190,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       passwordVisibility1
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
-                                      color: FlutterFlowTheme.primaryColor,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       size: 16,
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
                           ),
@@ -201,25 +212,30 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 controller: confirmPasswordTextController,
                                 obscureText: !passwordVisibility2,
                                 decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).subtitle1,
                                   hintText: 'password one more time',
-                                  hintStyle: FlutterFlowTheme.bodyText2,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.transparentTertiary,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .transparentTertiary,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 10, 0),
@@ -232,12 +248,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       passwordVisibility2
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
-                                      color: FlutterFlowTheme.primaryColor,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       size: 16,
                                     ),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
                           ),
@@ -259,7 +276,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     },
                                     child: Text(
                                       'back',
-                                      style: FlutterFlowTheme.bodyText2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText2,
                                     ),
                                   ),
                                 ),
@@ -274,7 +292,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                             .showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              "Passwords don't match!",
+                                              'Passwords don\'t match!',
                                             ),
                                           ),
                                         );
@@ -301,31 +319,32 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                       await Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              NavBarPage(initialPage: 'Main'),
+                                          builder: (context) => MainWidget(),
                                         ),
                                         (r) => false,
                                       );
                                     },
                                     child: Text(
                                       'go',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.primaryColor,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

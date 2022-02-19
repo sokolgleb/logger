@@ -8,7 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FavoritesWidget extends StatefulWidget {
-  FavoritesWidget({Key key}) : super(key: key);
+  const FavoritesWidget({Key key}) : super(key: key);
 
   @override
   _FavoritesWidgetState createState() => _FavoritesWidgetState();
@@ -26,7 +26,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.bGColor1,
+          color: FlutterFlowTheme.of(context).bGColor1,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -36,7 +36,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.bGColor1,
+                color: FlutterFlowTheme.of(context).bGColor1,
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -58,12 +58,12 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                           children: [
                             Text(
                               'Favorites',
-                              style: FlutterFlowTheme.title1,
-                            )
+                              style: FlutterFlowTheme.of(context).title1,
+                            ),
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -72,7 +72,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.bGColor2,
+                  color: FlutterFlowTheme.of(context).bGColor2,
                 ),
                 child: Container(
                   width: double.infinity,
@@ -95,7 +95,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                             width: 24,
                             height: 24,
                             child: SpinKitPulse(
-                              color: FlutterFlowTheme.primaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               size: 24,
                             ),
                           ),
@@ -129,7 +129,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

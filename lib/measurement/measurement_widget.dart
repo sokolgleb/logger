@@ -16,7 +16,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MeasurementWidget extends StatefulWidget {
-  MeasurementWidget({
+  const MeasurementWidget({
     Key key,
     this.currentMeasurementRef,
     this.returnTo,
@@ -46,7 +46,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
               width: 24,
               height: 24,
               child: SpinKitPulse(
-                color: FlutterFlowTheme.primaryColor,
+                color: FlutterFlowTheme.of(context).primaryColor,
                 size: 24,
               ),
             ),
@@ -60,7 +60,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.bGColor1,
+              color: FlutterFlowTheme.of(context).bGColor1,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -71,7 +71,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.bGColor1,
+                    color: FlutterFlowTheme.of(context).bGColor1,
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -92,7 +92,8 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                               fillColor: Color(0x00FFFFFF),
                               icon: Icon(
                                 Icons.arrow_back_ios_sharp,
-                                color: FlutterFlowTheme.bGColor1Text2,
+                                color:
+                                    FlutterFlowTheme.of(context).bGColor1Text2,
                                 size: 24,
                               ),
                               onPressed: () async {
@@ -130,12 +131,15 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                   ),
                                   child: AutoSizeText(
                                     measurementMeasurementsRecord.title,
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Comfortaa',
-                                      color: FlutterFlowTheme.bGColor1Text1,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .title1
+                                        .override(
+                                          fontFamily: 'Comfortaa',
+                                          color: FlutterFlowTheme.of(context)
+                                              .bGColor1Text1,
+                                        ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -156,7 +160,8 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                 fillColor: Colors.transparent,
                                 icon: Icon(
                                   Icons.more_vert_outlined,
-                                  color: FlutterFlowTheme.bGColor1Text2,
+                                  color: FlutterFlowTheme.of(context)
+                                      .bGColor1Text2,
                                   size: 24,
                                 ),
                                 onPressed: () async {
@@ -166,15 +171,20 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                     barrierColor: Color(0x80000000),
                                     context: context,
                                     builder: (context) {
-                                      return Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.2,
-                                        child: MesurementActionsIconsWidget(
-                                          measurement:
-                                              measurementMeasurementsRecord,
-                                          returnTo: widget.returnTo,
-                                          groupIndex: widget.groupIndex,
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.of(context).viewInsets,
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.2,
+                                          child: MesurementActionsIconsWidget(
+                                            measurement:
+                                                measurementMeasurementsRecord,
+                                            returnTo: widget.returnTo,
+                                            groupIndex: widget.groupIndex,
+                                          ),
                                         ),
                                       );
                                     },
@@ -183,7 +193,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -193,7 +203,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                     width: double.infinity,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.bGColor2,
+                      color: FlutterFlowTheme.of(context).bGColor2,
                     ),
                     child: Container(
                       width: double.infinity,
@@ -215,15 +225,19 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                   children: [
                                     TabBar(
                                       isScrollable: true,
-                                      labelColor: FlutterFlowTheme.primaryColor,
+                                      labelColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       unselectedLabelColor:
-                                          FlutterFlowTheme.tertiaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
                                       labelPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               30, 0, 30, 0),
-                                      labelStyle: FlutterFlowTheme.bodyText1,
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                       indicatorColor:
-                                          FlutterFlowTheme.primaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .primaryColor,
                                       indicatorWeight: 1,
                                       tabs: [
                                         Tab(
@@ -238,7 +252,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                           icon: Icon(
                                             Icons.table_rows_sharp,
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                     Expanded(
@@ -260,12 +274,11 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.center,
                                                   children: [
-                                                    Visibility(
-                                                      visible: functions.isHasValue(
-                                                              measurementMeasurementsRecord
-                                                                  .desc) ??
-                                                          true,
-                                                      child: Container(
+                                                    if (functions.isHasValue(
+                                                            measurementMeasurementsRecord
+                                                                .desc) ??
+                                                        true)
+                                                      Container(
                                                         width: double.infinity,
                                                         decoration:
                                                             BoxDecoration(
@@ -275,18 +288,18 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                         child: AutoSizeText(
                                                           measurementMeasurementsRecord
                                                               .desc,
-                                                          style:
-                                                              FlutterFlowTheme
-                                                                  .bodyText1
-                                                                  .override(
-                                                            fontFamily:
-                                                                'Comfortaa',
-                                                            color: FlutterFlowTheme
-                                                                .bGColor2Text1,
-                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Comfortaa',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bGColor2Text1,
+                                                              ),
                                                         ),
                                                       ),
-                                                    )
                                                   ],
                                                 ),
                                               ),
@@ -325,6 +338,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                             height: 24,
                                                             child: SpinKitPulse(
                                                               color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .primaryColor,
                                                               size: 24,
                                                             ),
@@ -348,13 +362,10 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                               MainAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Visibility(
-                                                              visible:
-                                                                  (containerMeasurementIndicatorValuesRecordList
-                                                                          .length) >
-                                                                      (0),
-                                                              child:
-                                                                  SingleChildScrollView(
+                                                            if ((containerMeasurementIndicatorValuesRecordList
+                                                                    .length) >
+                                                                0)
+                                                              SingleChildScrollView(
                                                                 primary: false,
                                                                 child: Column(
                                                                   mainAxisSize:
@@ -385,11 +396,11 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                               child: AutoSizeText(
                                                                                 '#',
                                                                                 textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.bodyText1.override(
-                                                                                  fontFamily: 'Comfortaa',
-                                                                                  color: FlutterFlowTheme.bGColor2Text1,
-                                                                                  fontSize: 14,
-                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Comfortaa',
+                                                                                      color: FlutterFlowTheme.of(context).bGColor2Text1,
+                                                                                      fontSize: 14,
+                                                                                    ),
                                                                               ),
                                                                             ),
                                                                           ),
@@ -405,10 +416,10 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                                 ),
                                                                                 child: Text(
                                                                                   'what',
-                                                                                  style: FlutterFlowTheme.bodyText1.override(
-                                                                                    fontFamily: 'Comfortaa',
-                                                                                    color: FlutterFlowTheme.bGColor2Text1,
-                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Comfortaa',
+                                                                                        color: FlutterFlowTheme.of(context).bGColor2Text1,
+                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -426,15 +437,15 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                                 child: AutoSizeText(
                                                                                   'when',
                                                                                   textAlign: TextAlign.end,
-                                                                                  style: FlutterFlowTheme.bodyText1.override(
-                                                                                    fontFamily: 'Comfortaa',
-                                                                                    color: FlutterFlowTheme.bGColor2Text1,
-                                                                                    fontSize: 14,
-                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Comfortaa',
+                                                                                        color: FlutterFlowTheme.of(context).bGColor2Text1,
+                                                                                        fontSize: 14,
+                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                          )
+                                                                          ),
                                                                         ],
                                                                       ),
                                                                     ),
@@ -443,7 +454,8 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                           20,
                                                                       thickness:
                                                                           1,
-                                                                      color: FlutterFlowTheme
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
                                                                           .bGColor2Text2,
                                                                     ),
                                                                     Builder(
@@ -470,10 +482,13 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                                       barrierColor: Color(0x7F000000),
                                                                                       context: context,
                                                                                       builder: (context) {
-                                                                                        return Container(
-                                                                                          height: MediaQuery.of(context).size.height * 0.2,
-                                                                                          child: ValueActionsIconWidget(
-                                                                                            currentValue: measurementValuesItem.reference,
+                                                                                        return Padding(
+                                                                                          padding: MediaQuery.of(context).viewInsets,
+                                                                                          child: Container(
+                                                                                            height: MediaQuery.of(context).size.height * 0.2,
+                                                                                            child: ValueActionsIconWidget(
+                                                                                              currentValue: measurementValuesItem.reference,
+                                                                                            ),
                                                                                           ),
                                                                                         );
                                                                                       },
@@ -505,13 +520,13 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                                               color: Color(0x00EEEEEE),
                                                                                             ),
                                                                                             child: AutoSizeText(
-                                                                                              functions.getHumanReadableIndex(measurementValuesIndex).toString().toString(),
+                                                                                              functions.getHumanReadableIndex(measurementValuesIndex).toString(),
                                                                                               textAlign: TextAlign.center,
-                                                                                              style: FlutterFlowTheme.bodyText1.override(
-                                                                                                fontFamily: 'Comfortaa',
-                                                                                                color: FlutterFlowTheme.bGColor2Text1,
-                                                                                                fontSize: 14,
-                                                                                              ),
+                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                    fontFamily: 'Comfortaa',
+                                                                                                    color: FlutterFlowTheme.of(context).bGColor2Text1,
+                                                                                                    fontSize: 14,
+                                                                                                  ),
                                                                                             ),
                                                                                           ),
                                                                                         ),
@@ -541,17 +556,17 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                                                 color: Color(0x00EEEEEE),
                                                                                               ),
                                                                                               child: AutoSizeText(
-                                                                                                dateTimeFormat('d/M h:m a', measurementValuesItem.timestamp),
+                                                                                                dateTimeFormat('d/M h:mm a', measurementValuesItem.timestamp),
                                                                                                 textAlign: TextAlign.end,
-                                                                                                style: FlutterFlowTheme.bodyText1.override(
-                                                                                                  fontFamily: 'Comfortaa',
-                                                                                                  color: FlutterFlowTheme.bGColor2Text1,
-                                                                                                  fontSize: 14,
-                                                                                                ),
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Comfortaa',
+                                                                                                      color: FlutterFlowTheme.of(context).bGColor2Text1,
+                                                                                                      fontSize: 14,
+                                                                                                    ),
                                                                                               ),
                                                                                             ),
                                                                                           ),
-                                                                                        )
+                                                                                        ),
                                                                                       ],
                                                                                     ),
                                                                                   ),
@@ -561,17 +576,14 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                           ),
                                                                         );
                                                                       },
-                                                                    )
+                                                                    ),
                                                                   ],
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Visibility(
-                                                              visible:
-                                                                  (containerMeasurementIndicatorValuesRecordList
-                                                                          .length) ==
-                                                                      (0),
-                                                              child: Container(
+                                                            if ((containerMeasurementIndicatorValuesRecordList
+                                                                    .length) ==
+                                                                0)
+                                                              Container(
                                                                 width: double
                                                                     .infinity,
                                                                 height: MediaQuery.of(
@@ -595,16 +607,15 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                                                       .fitWidth,
                                                                 ),
                                                               ),
-                                                            )
                                                           ],
                                                         ),
                                                       );
                                                     },
                                                   ),
-                                                )
+                                                ),
                                               ],
                                             ),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -635,12 +646,12 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                         borderColor: Colors.transparent,
                                         borderRadius: 10,
                                         buttonSize: 40,
-                                        fillColor:
-                                            FlutterFlowTheme.primaryColor,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .primaryColor,
                                         icon: Icon(
                                           Icons.add,
-                                          color:
-                                              FlutterFlowTheme.secondaryColor,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
                                           size: 24,
                                         ),
                                         onPressed: () async {
@@ -656,7 +667,7 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                           );
                                         },
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -681,23 +692,25 @@ class _MeasurementWidgetState extends State<MeasurementWidget> {
                                     child: Text(
                                       'from ${dateTimeFormat('d/M/y', measurementMeasurementsRecord.createdAt)}',
                                       textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.bodyText2.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.bGColor2Text2,
-                                        fontSize: 12,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText2
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .bGColor2Text2,
+                                            fontSize: 12,
+                                          ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

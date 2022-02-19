@@ -11,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MesurementActionsWidget extends StatefulWidget {
-  MesurementActionsWidget({
+  const MesurementActionsWidget({
     Key key,
     this.measurement,
     this.returnTo,
@@ -34,7 +34,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.bGColor2,
+        color: FlutterFlowTheme.of(context).bGColor2,
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
@@ -65,10 +65,12 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Edit',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text1,
+                                    ),
                           ),
                         ),
                         Container(
@@ -78,12 +80,14 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Update this measurement',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -93,7 +97,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.edit_sharp,
-                        color: FlutterFlowTheme.tertiaryColor,
+                        color: FlutterFlowTheme.of(context).tertiaryColor,
                         size: 30,
                       ),
                       onPressed: () async {
@@ -110,7 +114,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           (r) => false,
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -138,10 +142,12 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Archive',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text1,
+                                    ),
                           ),
                         ),
                         Container(
@@ -151,12 +157,14 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Move this measurement to the archive',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -166,7 +174,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.archive_sharp,
-                        color: FlutterFlowTheme.tertiaryColor,
+                        color: FlutterFlowTheme.of(context).tertiaryColor,
                         size: 30,
                       ),
                       onPressed: () async {
@@ -207,16 +215,21 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           SnackBar(
                             content: Text(
                               'Un-archive measurement',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.secondaryColor,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Comfortaa',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                  ),
                             ),
                             duration: Duration(milliseconds: 5000),
-                            backgroundColor: FlutterFlowTheme.tertiaryColor,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).tertiaryColor,
                             action: SnackBarAction(
                               label: 'Yes, return',
-                              textColor: FlutterFlowTheme.secondaryColor,
+                              textColor:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                               onPressed: () async {
                                 final measurementsUpdateData =
                                     createMeasurementsRecordData(
@@ -230,7 +243,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -258,10 +271,12 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Share',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.tertiaryColor,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .tertiaryColor,
+                                    ),
                           ),
                         ),
                         Container(
@@ -271,12 +286,14 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Share this measurement with others',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -291,7 +308,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                       onPressed: () {
                         print('IconButton pressed ...');
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -319,10 +336,12 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Delete',
-                            style: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text1,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text1,
+                                    ),
                           ),
                         ),
                         Container(
@@ -332,12 +351,14 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                           child: AutoSizeText(
                             'Delete this measurement',
-                            style: FlutterFlowTheme.bodyText2.override(
-                              fontFamily: 'Comfortaa',
-                              color: FlutterFlowTheme.bGColor2Text2,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Comfortaa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor2Text2,
+                                    ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     FlutterFlowIconButton(
@@ -347,7 +368,7 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                       buttonSize: 60,
                       icon: Icon(
                         Icons.delete,
-                        color: FlutterFlowTheme.primaryColor,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         size: 30,
                       ),
                       onPressed: () async {
@@ -388,16 +409,21 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           SnackBar(
                             content: Text(
                               'Undo deletion',
-                              style: FlutterFlowTheme.bodyText1.override(
-                                fontFamily: 'Comfortaa',
-                                color: FlutterFlowTheme.secondaryColor,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Comfortaa',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                  ),
                             ),
                             duration: Duration(milliseconds: 5000),
-                            backgroundColor: FlutterFlowTheme.tertiaryColor,
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).tertiaryColor,
                             action: SnackBarAction(
                               label: 'Yes, restore',
-                              textColor: FlutterFlowTheme.secondaryColor,
+                              textColor:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                               onPressed: () async {
                                 final measurementsUpdateData =
                                     createMeasurementsRecordData(
@@ -411,11 +437,11 @@ class _MesurementActionsWidgetState extends State<MesurementActionsWidget> {
                           ),
                         );
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

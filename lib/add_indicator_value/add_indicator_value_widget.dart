@@ -17,7 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddIndicatorValueWidget extends StatefulWidget {
-  AddIndicatorValueWidget({
+  const AddIndicatorValueWidget({
     Key key,
     this.currentMeasurement,
   }) : super(key: key);
@@ -75,40 +75,41 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
-        stream: queryMeasurementIndicatorTypesRecord(
-          queryBuilder: (measurementIndicatorTypesRecord) =>
-              measurementIndicatorTypesRecord
-                  .where('active', isEqualTo: true)
-                  .orderBy('order'),
-        ),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 24,
-                height: 24,
-                child: SpinKitPulse(
-                  color: FlutterFlowTheme.primaryColor,
-                  size: 24,
-                ),
+    return StreamBuilder<List<MeasurementIndicatorTypesRecord>>(
+      stream: queryMeasurementIndicatorTypesRecord(
+        queryBuilder: (measurementIndicatorTypesRecord) =>
+            measurementIndicatorTypesRecord
+                .where('active', isEqualTo: true)
+                .orderBy('order'),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 24,
+              height: 24,
+              child: SpinKitPulse(
+                color: FlutterFlowTheme.of(context).primaryColor,
+                size: 24,
               ),
-            );
-          }
-          List<MeasurementIndicatorTypesRecord>
-              addIndicatorValueMeasurementIndicatorTypesRecordList =
-              snapshot.data;
-          return Scaffold(
-            key: scaffoldKey,
-            backgroundColor: Colors.transparent,
-            body: Container(
+            ),
+          );
+        }
+        List<MeasurementIndicatorTypesRecord>
+            addIndicatorValueMeasurementIndicatorTypesRecordList =
+            snapshot.data;
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Colors.transparent,
+          body: Form(
+            key: formKey,
+            autovalidateMode: AutovalidateMode.disabled,
+            child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.bGColor1,
+                color: FlutterFlowTheme.of(context).bGColor1,
               ),
               child: Stack(
                 children: [
@@ -121,7 +122,7 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.bGColor1,
+                          color: FlutterFlowTheme.of(context).bGColor1,
                           boxShadow: [
                             BoxShadow(
                               color: Colors.transparent,
@@ -151,7 +152,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                     fillColor: Color(0x00FFFFFF),
                                     icon: Icon(
                                       Icons.arrow_back_ios_sharp,
-                                      color: FlutterFlowTheme.bGColor1Text2,
+                                      color: FlutterFlowTheme.of(context)
+                                          .bGColor1Text2,
                                       size: 24,
                                     ),
                                     onPressed: () async {
@@ -181,18 +183,20 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                         ),
                                         child: AutoSizeText(
                                           widget.currentMeasurement.title,
-                                          style:
-                                              FlutterFlowTheme.title1.override(
-                                            fontFamily: 'Comfortaa',
-                                            color:
-                                                FlutterFlowTheme.bGColor1Text1,
-                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .title1
+                                              .override(
+                                                fontFamily: 'Comfortaa',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bGColor1Text1,
+                                              ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -202,7 +206,7 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                           width: double.infinity,
                           height: double.infinity,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.bGColor2,
+                            color: FlutterFlowTheme.of(context).bGColor2,
                           ),
                           child: Padding(
                             padding:
@@ -212,77 +216,72 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Number'),
-                                  child: TextFormField(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Number')
+                                  TextFormField(
                                     controller: numberValueController,
                                     obscureText: false,
                                     decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyText2,
                                       hintText: 'value',
-                                      hintStyle:
-                                          FlutterFlowTheme.title2.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.bGColor2Text2,
-                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .title2
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .bGColor2Text2,
+                                          ),
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
                                     ),
-                                    style: FlutterFlowTheme.title2,
+                                    style: FlutterFlowTheme.of(context).title2,
                                     textAlign: TextAlign.center,
                                     keyboardType: TextInputType.number,
-                                    validator: (val) {
-                                      if (val.isEmpty) {
-                                        return 'It\'s required field';
-                                      }
-
-                                      return null;
-                                    },
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Text'),
-                                  child: Padding(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Text')
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 5, 5, 5),
                                     child: TextFormField(
                                       controller: textValueController,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor2Text2,
+                                            ),
                                         hintText: 'Add your text',
-                                        hintStyle:
-                                            FlutterFlowTheme.bodyText2.override(
-                                          fontFamily: 'Comfortaa',
-                                          color: FlutterFlowTheme.bGColor2Text2,
-                                        ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor2Text2,
+                                            ),
                                         enabledBorder: InputBorder.none,
                                         focusedBorder: InputBorder.none,
                                       ),
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.bGColor2Text1,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .bGColor2Text1,
+                                          ),
                                       textAlign: TextAlign.center,
                                       maxLines: 25,
-                                      validator: (val) {
-                                        if (val.isEmpty) {
-                                          return 'It\'s required field';
-                                        }
-
-                                        return null;
-                                      },
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Slider'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Slider')
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0x00EEEEEE),
@@ -290,15 +289,16 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Visibility(
-                                          visible: (widget.currentMeasurement
-                                                  .indicatorType) ==
-                                              ('Slider'),
-                                          child: Slider.adaptive(
+                                        if ((widget.currentMeasurement
+                                                .indicatorType) ==
+                                            'Slider')
+                                          Slider.adaptive(
                                             activeColor:
-                                                FlutterFlowTheme.primaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
                                             inactiveColor:
-                                                FlutterFlowTheme.tertiaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiaryColor,
                                             min: 0,
                                             max: 10,
                                             value: sliderValueValue ??= functions
@@ -314,25 +314,23 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   sliderValueValue = newValue);
                                             },
                                           ),
-                                        ),
                                         Text(
                                           '${functions.getFixedDouble(sliderValueValue)} / 10',
-                                          style: FlutterFlowTheme.subtitle1
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
                                               .override(
-                                            fontFamily: 'Comfortaa',
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
-                                          ),
-                                        )
+                                                fontFamily: 'Comfortaa',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
+                                              ),
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Rating'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Rating')
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0x00EEEEEE),
@@ -340,11 +338,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Visibility(
-                                          visible: (widget.currentMeasurement
-                                                  .indicatorType) ==
-                                              ('Rating'),
-                                          child: RatingBar.builder(
+                                        if ((widget.currentMeasurement
+                                                .indicatorType) ==
+                                            'Rating')
+                                          RatingBar.builder(
                                             onRatingUpdate: (newValue) =>
                                                 setState(() =>
                                                     ratingValueValue =
@@ -353,7 +350,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 Icon(
                                               Icons.star_border_rounded,
                                               color:
-                                                  FlutterFlowTheme.primaryColor,
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
                                             ),
                                             direction: Axis.horizontal,
                                             initialRating: ratingValueValue ??=
@@ -368,22 +366,20 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                     .toDouble()
                                                     .toDouble(),
                                             unratedColor:
-                                                FlutterFlowTheme.tertiaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiaryColor,
                                             itemCount: 5,
                                             itemSize: 40,
                                             glowColor:
-                                                FlutterFlowTheme.primaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
                                           ),
-                                        )
                                       ],
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Switch'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Switch')
+                                  Container(
                                     width: 60,
                                     height: 50,
                                     decoration: BoxDecoration(
@@ -398,23 +394,21 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   .indicatorDefaultBooleanValue),
                                       onChanged: (newValue) => setState(
                                           () => switchValueValue = newValue),
-                                      tileColor:
-                                          FlutterFlowTheme.secondaryColor,
-                                      activeColor:
-                                          FlutterFlowTheme.primaryColor,
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                       activeTrackColor:
-                                          FlutterFlowTheme.secondaryColor,
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryColor,
                                       dense: false,
                                       controlAffinity:
                                           ListTileControlAffinity.leading,
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Image'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Image')
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0x00EEEEEE),
@@ -422,11 +416,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Visibility(
-                                          visible: functions.isHasValue(
-                                                  uploadedFileUrl1) ??
-                                              true,
-                                          child: CachedNetworkImage(
+                                        if (functions
+                                                .isHasValue(uploadedFileUrl1) ??
+                                            true)
+                                          CachedNetworkImage(
                                             imageUrl: uploadedFileUrl1,
                                             width: MediaQuery.of(context)
                                                     .size
@@ -435,7 +428,6 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                             height: 150,
                                             fit: BoxFit.cover,
                                           ),
-                                        ),
                                         FlutterFlowIconButton(
                                           borderColor: Color(0x00620F0F),
                                           borderRadius: 30,
@@ -444,8 +436,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                           fillColor: Colors.transparent,
                                           icon: Icon(
                                             Icons.image_sharp,
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -454,9 +446,11 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                               context: context,
                                               allowPhoto: true,
                                               backgroundColor:
-                                                  FlutterFlowTheme.bGColor2,
-                                              textColor: FlutterFlowTheme
-                                                  .bGColor2Text1,
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor2,
+                                              textColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor2Text1,
                                               pickerFontFamily: 'Comfortaa',
                                             );
                                             if (selectedMedia != null &&
@@ -464,8 +458,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                     selectedMedia.storagePath,
                                                     context)) {
                                               showUploadMessage(
-                                                  context, 'Uploading file...',
-                                                  showLoading: true);
+                                                context,
+                                                'Uploading file...',
+                                                showLoading: true,
+                                              );
                                               final downloadUrl =
                                                   await uploadData(
                                                       selectedMedia.storagePath,
@@ -477,24 +473,25 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                     uploadedFileUrl1 =
                                                         downloadUrl);
                                                 showUploadMessage(
-                                                    context, 'Success!');
+                                                  context,
+                                                  'Success!',
+                                                );
                                               } else {
-                                                showUploadMessage(context,
-                                                    'Failed to upload media');
+                                                showUploadMessage(
+                                                  context,
+                                                  'Failed to upload media',
+                                                );
                                                 return;
                                               }
                                             }
                                           },
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Video'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Video')
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0x00EEEEEE),
@@ -502,11 +499,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Visibility(
-                                          visible: functions.isHasValue(
-                                                  uploadedFileUrl2) ??
-                                              true,
-                                          child: FlutterFlowVideoPlayer(
+                                        if (functions
+                                                .isHasValue(uploadedFileUrl2) ??
+                                            true)
+                                          FlutterFlowVideoPlayer(
                                             path: uploadedFileUrl2,
                                             videoType: VideoType.network,
                                             width: MediaQuery.of(context)
@@ -519,7 +515,6 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                             allowFullScreen: true,
                                             allowPlaybackSpeedMenu: true,
                                           ),
-                                        ),
                                         FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
@@ -528,8 +523,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                           fillColor: Colors.transparent,
                                           icon: Icon(
                                             Icons.video_collection_rounded,
-                                            color:
-                                                FlutterFlowTheme.primaryColor,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -544,8 +539,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                     selectedMedia.storagePath,
                                                     context)) {
                                               showUploadMessage(
-                                                  context, 'Uploading file...',
-                                                  showLoading: true);
+                                                context,
+                                                'Uploading file...',
+                                                showLoading: true,
+                                              );
                                               final downloadUrl =
                                                   await uploadData(
                                                       selectedMedia.storagePath,
@@ -557,24 +554,25 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                     uploadedFileUrl2 =
                                                         downloadUrl);
                                                 showUploadMessage(
-                                                    context, 'Success!');
+                                                  context,
+                                                  'Success!',
+                                                );
                                               } else {
-                                                showUploadMessage(context,
-                                                    'Failed to upload media');
+                                                showUploadMessage(
+                                                  context,
+                                                  'Failed to upload media',
+                                                );
                                                 return;
                                               }
                                             }
                                           },
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ),
-                                Visibility(
-                                  visible: (widget
-                                          .currentMeasurement.indicatorType) ==
-                                      ('Time'),
-                                  child: Container(
+                                if ((widget.currentMeasurement.indicatorType) ==
+                                    'Time')
+                                  Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0x00EEEEEE),
@@ -597,13 +595,18 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                               controller: daysController,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 hintText: 'DD',
                                                 hintStyle:
-                                                    FlutterFlowTheme.subtitle2,
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -618,7 +621,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -631,7 +635,9 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              style: FlutterFlowTheme.subtitle1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1,
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.number,
@@ -651,13 +657,18 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                               controller: hoursController,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 hintText: 'HH\n',
                                                 hintStyle:
-                                                    FlutterFlowTheme.subtitle2,
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -672,7 +683,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -685,7 +697,9 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              style: FlutterFlowTheme.subtitle1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1,
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.number,
@@ -705,13 +719,18 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                               controller: minutesController,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 hintText: 'MM\n',
                                                 hintStyle:
-                                                    FlutterFlowTheme.subtitle2,
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -726,7 +745,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -739,7 +759,9 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              style: FlutterFlowTheme.subtitle1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1,
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.number,
@@ -759,13 +781,18 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                               controller: secondsController,
                                               obscureText: false,
                                               decoration: InputDecoration(
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 hintText: 'SS',
                                                 hintStyle:
-                                                    FlutterFlowTheme.subtitle2,
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2,
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -780,7 +807,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: FlutterFlowTheme
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .tertiaryColor,
                                                     width: 1,
                                                   ),
@@ -793,17 +821,18 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              style: FlutterFlowTheme.subtitle1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1,
                                               textAlign: TextAlign.center,
                                               keyboardType:
                                                   TextInputType.number,
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
-                                ),
                                 Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
@@ -820,12 +849,14 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                           Text(
                                             functions
                                                 .getCurrentDateTime(datePicked),
-                                            style: FlutterFlowTheme.bodyText2
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2
                                                 .override(
-                                              fontFamily: 'Comfortaa',
-                                              color: FlutterFlowTheme
-                                                  .bGColor2Text2,
-                                            ),
+                                                  fontFamily: 'Comfortaa',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bGColor2Text2,
+                                                ),
                                           ),
                                           FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
@@ -836,7 +867,8 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                             icon: Icon(
                                               Icons.access_time_rounded,
                                               color:
-                                                  FlutterFlowTheme.primaryColor,
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
                                               size: 20,
                                             ),
                                             onPressed: () async {
@@ -850,19 +882,20 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                                 },
                                                 currentTime:
                                                     getCurrentTimestamp,
+                                                minTime: DateTime(0, 0, 0),
                                               );
                                             },
-                                          )
+                                          ),
                                         ],
-                                      )
+                                      ),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Align(
@@ -884,13 +917,10 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                             fillColor: Colors.transparent,
                             icon: Icon(
                               Icons.check_outlined,
-                              color: FlutterFlowTheme.primaryColor,
+                              color: FlutterFlowTheme.of(context).primaryColor,
                               size: 30,
                             ),
                             onPressed: () async {
-                              if (!formKey.currentState.validate()) {
-                                return;
-                              }
                               final measurementIndicatorValuesCreateData =
                                   createMeasurementIndicatorValuesRecordData(
                                 timestamp: functions.getTimestamp(datePicked),
@@ -975,17 +1005,17 @@ class _AddIndicatorValueWidgetState extends State<AddIndicatorValueWidget> {
                                   .update(measurementsUpdateData);
                               Navigator.pop(context);
                             },
-                          )
+                          ),
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

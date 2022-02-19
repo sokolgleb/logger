@@ -11,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddGroupWidget extends StatefulWidget {
-  AddGroupWidget({
+  const AddGroupWidget({
     Key key,
     this.userGroupsCount,
     this.parentGroup,
@@ -38,16 +38,17 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.transparent,
-        body: Container(
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.transparent,
+      body: Form(
+        key: formKey,
+        autovalidateMode: AutovalidateMode.disabled,
+        child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.bGColor1,
+            color: FlutterFlowTheme.of(context).bGColor1,
           ),
           child: Stack(
             children: [
@@ -59,7 +60,7 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.bGColor1,
+                      color: FlutterFlowTheme.of(context).bGColor1,
                     ),
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -77,7 +78,8 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                               fillColor: Color(0x00FFFFFF),
                               icon: Icon(
                                 Icons.arrow_back_ios_sharp,
-                                color: FlutterFlowTheme.bGColor1Text2,
+                                color:
+                                    FlutterFlowTheme.of(context).bGColor1Text2,
                                 size: 24,
                               ),
                               onPressed: () async {
@@ -99,10 +101,13 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                                 children: [
                                   Text(
                                     'Add',
-                                    style: FlutterFlowTheme.title1.override(
-                                      fontFamily: 'Comfortaa',
-                                      color: FlutterFlowTheme.bGColor1Text1,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .title1
+                                        .override(
+                                          fontFamily: 'Comfortaa',
+                                          color: FlutterFlowTheme.of(context)
+                                              .bGColor1Text1,
+                                        ),
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(0, 0.22),
@@ -111,18 +116,21 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                                           5, 0, 0, 5),
                                       child: Text(
                                         'group',
-                                        style:
-                                            FlutterFlowTheme.bodyText2.override(
-                                          fontFamily: 'Comfortaa',
-                                          color: FlutterFlowTheme.bGColor1Text2,
-                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Comfortaa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bGColor1Text2,
+                                            ),
                                       ),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -131,7 +139,7 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.bGColor2,
+                        color: FlutterFlowTheme.of(context).bGColor2,
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 60),
@@ -151,34 +159,35 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                                   controller: groupTitleController,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
                                     hintText: 'title',
-                                    hintStyle: FlutterFlowTheme.title2.override(
-                                      fontFamily: 'Comfortaa',
-                                      color: FlutterFlowTheme.bGColor2Text2,
-                                    ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .title2
+                                        .override(
+                                          fontFamily: 'Comfortaa',
+                                          color: FlutterFlowTheme.of(context)
+                                              .bGColor2Text2,
+                                        ),
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                   ),
-                                  style: FlutterFlowTheme.title3.override(
-                                    fontFamily: 'Comfortaa',
-                                    color: FlutterFlowTheme.bGColor2Text1,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .title3
+                                      .override(
+                                        fontFamily: 'Comfortaa',
+                                        color: FlutterFlowTheme.of(context)
+                                            .bGColor2Text1,
+                                      ),
                                   textAlign: TextAlign.center,
-                                  validator: (val) {
-                                    if (val.isEmpty) {
-                                      return 'Title is required field';
-                                    }
-
-                                    return null;
-                                  },
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Align(
@@ -203,13 +212,10 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                           fillColor: Colors.transparent,
                           icon: Icon(
                             Icons.check_outlined,
-                            color: FlutterFlowTheme.primaryColor,
+                            color: FlutterFlowTheme.of(context).primaryColor,
                             size: 30,
                           ),
                           onPressed: () async {
-                            if (!formKey.currentState.validate()) {
-                              return;
-                            }
                             final groupsCreateData = createGroupsRecordData(
                               title: groupTitleController.text,
                               user: currentUserReference,
@@ -239,11 +245,11 @@ class _AddGroupWidgetState extends State<AddGroupWidget> {
                             setState(() {});
                           },
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

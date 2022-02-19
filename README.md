@@ -1,4 +1,4 @@
-# logger
+# Logger
 
 A new Flutter project.
 

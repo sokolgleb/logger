@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RestorePasswordWidget extends StatefulWidget {
-  RestorePasswordWidget({Key key}) : super(key: key);
+  const RestorePasswordWidget({Key key}) : super(key: key);
 
   @override
   _RestorePasswordWidgetState createState() => _RestorePasswordWidgetState();
@@ -32,7 +32,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.bGColor1,
+          color: FlutterFlowTheme.of(context).bGColor1,
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(30, 40, 30, 40),
@@ -55,10 +55,10 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                       Text(
                         'reset',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.title1.override(
-                          fontFamily: 'Comfortaa',
-                          color: FlutterFlowTheme.primaryColor,
-                        ),
+                        style: FlutterFlowTheme.of(context).title1.override(
+                              fontFamily: 'Comfortaa',
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                            ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 10),
@@ -68,10 +68,10 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                           ),
                           child: Text(
                             'password',
-                            style: FlutterFlowTheme.bodyText2,
+                            style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -101,30 +101,35 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                 controller: emailTextController,
                                 obscureText: false,
                                 decoration: InputDecoration(
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).subtitle1,
                                   hintText: 'email',
-                                  hintStyle: FlutterFlowTheme.bodyText2,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.bGColor1,
+                                      color:
+                                          FlutterFlowTheme.of(context).bGColor1,
                                       width: 1,
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   filled: true,
-                                  fillColor:
-                                      FlutterFlowTheme.transparentTertiary,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .transparentTertiary,
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 10, 0),
                                 ),
-                                style: FlutterFlowTheme.bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
                           ),
@@ -146,7 +151,8 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                     },
                                     child: Text(
                                       'back',
-                                      style: FlutterFlowTheme.bodyText2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText2,
                                     ),
                                   ),
                                 ),
@@ -196,23 +202,25 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                     },
                                     child: Text(
                                       'go',
-                                      style:
-                                          FlutterFlowTheme.bodyText1.override(
-                                        fontFamily: 'Comfortaa',
-                                        color: FlutterFlowTheme.primaryColor,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Comfortaa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
